@@ -1,0 +1,23 @@
+<!-- rentals/templates/rentals/booking_confirmation.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Booking Confirmation</title>
+</head>
+<body>
+    <h1>Booking Confirmation</h1>
+    <p>Thank you for booking {{ booking.car_model.name }}!</p>
+    <p>Total Price: ${{ booking.total_price }}</p>
+    <p>Driver: {{ booking.driver.name }}</p>
+    <p>Start Date: {{ booking.start_date }}</p>
+    <p>End Date: {{ booking.end_date }}</p>
+    <p>Payment Method: {{ booking.payment_method }}</p>
+    <p>Extras:</p>
+    <ul>
+        {% for extra in booking.extras.all %}
+        <li>{{ extra.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

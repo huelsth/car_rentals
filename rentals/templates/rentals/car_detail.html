@@ -1,0 +1,37 @@
+<!-- rentals/templates/rentals/car_detail.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Detail</title>
+</head>
+<body>
+    <h1>{{ car.name }}</h1>
+    <p>Price per day: ${{ car.price_per_day }}</p>
+    <p>Price per week: ${{ car.price_per_week }}</p>
+    <form method="post">
+        {% csrf_token %}
+        <label for="driver_id">Driver:</label>
+        <select name="driver_id" id="driver_id">
+            {% for driver in drivers %}
+            <option value="{{ driver.id }}">{{ driver.name }}</option>
+            {% endfor %}
+        </select><br>
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" id="start_date"><br>
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" id="end_date"><br>
+        <label for="extras">Extras:</label><br>
+        {% for extra in extras %}
+        <input type="checkbox" name="extras" value="{{ extra.id }}">{{ extra.name }} - ${{ extra.price }}<br>
+        {% endfor %}
+        <label for="payment_method">Payment Method:</label>
+        <select name="payment_method" id="payment_method">
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Cash">Cash</option>
+        </select><br>
+        <button type="submit">Book Now</button>
+    </form>
+</body>
+</html>
