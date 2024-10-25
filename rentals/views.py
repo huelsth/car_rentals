@@ -44,3 +44,5 @@ def car_detail(request, car_id):
 def booking_confirmation(request, booking_id):
     booking = get_object_or_404(Booking, pk=booking_id)
     return render(request, 'rentals/booking_confirmation.html', {'booking': booking})
+
+#final version
